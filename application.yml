@@ -1,6 +1,7 @@
 #Eureka Config
 eureka.client.service-url.defaultZone: http://localhost:8761/eureka
 
+# actuator config
 management:
   endpoints:
       web:
@@ -9,3 +10,8 @@ management:
 eureka:                                                                                                                                                                       
       instance:                                                                                                                                                                   
         instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}   
+        
+
+#Zipkin Config
+management.tracing.sampling.probability: 1.0
+spring.zipkin.baseUrl: http://localhost:9411
