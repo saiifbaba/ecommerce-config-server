@@ -1,5 +1,5 @@
 #Eureka Config
-eureka.client.service-url.defaultZone: http://localhost:8761/eureka
+eureka.client.service-url.defaultZone: http://discovery-service:8761/eureka
 
 # actuator config
 management:
@@ -10,8 +10,11 @@ management:
 eureka:                                                                                                                                                                       
       instance:                                                                                                                                                                   
         instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}   
-        
+  tracing:
+     sampling:
+        probability: 1.0      
 
-#Zipkin Config
-management.tracing.sampling.probability: 1.0
-spring.zipkin.baseUrl:  http://localhost:9411
+
+  zipkin:
+     tracing:
+        endpoint: http://zipkin:9411/api/v2/spans
